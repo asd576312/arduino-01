@@ -1,0 +1,63 @@
+import java.lang.*;
+public class hw
+{
+	public static void main(String args[])
+	{
+		System.out.println("2的 5次方=" +powerXY(2,5));
+		System.out.println("2的 0次方=" +powerXY(2,0));
+		System.out.println("\t0的 0次方=" +powerXY(0,0));
+		System.out.println("\t2的 -2次方=" +powerXY(2,-2));
+	}
+	
+	static int powerXY(int x,int y)
+	{
+		int result=1;
+		try
+		{
+			if( x == 0 && y == 0 )
+			{
+				throw new CmyException1("0的0次方無定義,回傳值將錯誤");
+			}
+			else if(y<0)
+			{
+				throw new CmyException2("次方為負值,結果不為整數,回傳值將錯誤");
+			}
+			for(int i=1;i<=y;i++)
+			{
+				result=result*x;
+			}
+		}
+		catch(CmyException1 | CmyException2 e)
+		{
+			return -1;
+		}
+		finally
+		{
+			return result;
+		}
+	}
+}
+class CmyException1 extends Exception
+{
+	public CmyException1() //建構子
+	{
+		super();
+	}
+	public CmyException1(String msg) //建構子
+	{
+		super();
+		System.out.print(msg);
+	}
+}
+class CmyException2 extends Exception
+{
+	public CmyException2() //建構子
+	{
+		super();
+	}
+	public CmyException2(String msg) //建構子
+	{
+		super();
+		System.out.print(msg);
+	}
+}
